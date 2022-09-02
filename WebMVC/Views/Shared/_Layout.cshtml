@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - CRUD</title>
+    @Styles.Render("~/wwwroot/css/ajuste-forms.css")
+    @Styles.Render("~/wwwroot/css/bootstrap-datetimepicker.css")
+    @Styles.Render("~/wwwroot/css/bootstrap-formhelpers.min.css")
+    @Styles.Render("~/wwwroot/css/bootstrap-menu.css")
+    @Styles.Render("~/wwwroot/css/bootstrap.min.css")
+    @Styles.Render("~/wwwroot/css/css-core.css")
+    @Styles.Render("~/wwwroot/css/layout.css")
+
+    @Scripts.Render("~/wwwroot/js/jquery.js")
+    @Scripts.Render("~/wwwroot/js/moment.min.js")
+    @Scripts.Render("~/wwwroot/js/jquery.inputmask.js")
+    @Scripts.Render("~/wwwroot/js/datetimepicker.min.js")
+    @Scripts.Render("~/wwwroot/js/bootstrap.min.js")
+</head>
+<body>
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

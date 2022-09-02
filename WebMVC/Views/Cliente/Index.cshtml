@@ -1,0 +1,44 @@
+﻿@model IEnumerable<WebMVC.Models.Cliente>
+
+
+@{
+    ViewBag.Title = "Listagem de Clientes";
+}
+
+<h2 class="text-center">Listagem de Clientes</h2>
+<div class="text-center">
+
+    <div class="form-group">
+        @Html.ActionLink("Criar Novo Cliente", "Create", null, new { @class = "btn btn-primary", @style = "float: right; margin: 10px" })
+    </div>
+    <table class="table">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.CPF)</th>
+            <th>@Html.DisplayNameFor(model => model.RG)</th>
+            <th>@Html.DisplayNameFor(model => model.DataExpedicao)</th>
+            <th>@Html.DisplayNameFor(model => model.UF)</th>
+            <th>@Html.DisplayNameFor(model => model.DataNascimento)</th>
+            <th>@Html.DisplayNameFor(model => model.Sexo)</th>
+            <th>@Html.DisplayNameFor(model => model.EstadoCivil)</th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.CPF)</td>
+                <td>@Html.DisplayFor(modelItem => item.RG)</td>
+                <td>@Html.DisplayFor(modelItem => item.DataExpedicao)</td>
+                <td>@Html.DisplayFor(modelItem => item.UF)</td>
+                <td>@Html.DisplayFor(modelItem => item.DataNascimento)</td>
+                <td>@Html.DisplayFor(modelItem => item.Sexo)</td>
+                <td>@Html.DisplayFor(modelItem => item.EstadoCivil)</td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.ClienteId }) |
+                    @Html.ActionLink("Deletar", "Delete", new { id = item.ClienteId })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

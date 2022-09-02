@@ -1,0 +1,44 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="pt">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem de Clientes - CRUD</title>
+    <link href="/wwwroot/css/ajuste-forms.css" rel="stylesheet">
+
+    <link href="/wwwroot/css/bootstrap-datetimepicker.css" rel="stylesheet">
+
+    <link href="/wwwroot/css/bootstrap-formhelpers.min.css" rel="stylesheet">
+
+    <link href="/wwwroot/css/bootstrap-menu.css" rel="stylesheet">
+
+    <link href="/wwwroot/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="/wwwroot/css/css-core.css" rel="stylesheet">
+
+    <link href="/wwwroot/css/layout.css" rel="stylesheet">
+
+
+    <script src="/wwwroot/js/jquery.js"></script>
+
+    <script src="/wwwroot/js/moment.min.js"></script>
+
+    <script src="/wwwroot/js/jquery.inputmask.js"></script>
+
+    <script src="/wwwroot/js/datetimepicker.min.js"></script>
+
+    <script src="/wwwroot/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <form runat="server">        
+        <div class="container body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>

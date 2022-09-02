@@ -1,0 +1,194 @@
+﻿@model WebMVC.Models.Cliente
+
+@{
+    ViewBag.Title = "Cadastro de Cliente";
+}
+
+
+<div class="form-group row" style="margin: 20px;">
+    <div style="float: left; margin: 10px; margin-top: 16px">
+        <a href="@Url.Action("Index", "Cliente")" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span></a>
+    </div>
+
+    <h2 class="text-center" style="margin-right: 50px;">Cadastro de Cliente</h2>
+</div>
+
+<div class="title">
+    <h4>Cliente</h4>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+    @Html.ValidationSummary(true, "Dados inválidos, corrija os valores e tente novamente.", new { @class = "text-danger" })
+    <div class="form-group">
+        <div class="col-md-12">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.CPF, htmlAttributes: new { @class = "control-label required" })
+
+                @Html.EditorFor(model => model.CPF, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CPF, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-10">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label required" })
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12">
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.RG, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.RG, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RG, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.DataExpedicao, htmlAttributes: new { @class = "control-label col-md-12" })
+                <div id='datetimepicker1' class="input-group date" data-provide="datepicker">
+
+                    @Html.EditorFor(model => model.DataExpedicao, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="input-group-addon" id="AddonDataExpedicao" onclick="formatarData1">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </div>
+                </div>
+                @Html.ValidationMessageFor(model => model.DataExpedicao, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.OrgaoExpedicao, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.OrgaoExpedicao, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.OrgaoExpedicao, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.UF, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.UF, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UF, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12">
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.DataNascimento, htmlAttributes: new { @class = "control-label col-md-12 required" })
+                <div id='datetimepicker2' class="input-group date" data-provide="datepicker">
+
+                    @Html.EditorFor(model => model.DataNascimento, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="input-group-addon" id="AddonDataNascimente" onclick="formatarData2">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </div>
+                </div>
+                @Html.ValidationMessageFor(model => model.DataNascimento, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.Sexo, htmlAttributes: new { @class = "control-label required" })
+                @Html.DropDownListFor(model => model.Sexo, ViewBag.SexoList as SelectList, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Sexo, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.EstadoCivil, htmlAttributes: new { @class = "control-label required" })
+                @Html.DropDownListFor(model => model.EstadoCivil, ViewBag.EstadoCivilList as SelectList, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.EstadoCivil, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="title">
+        <h4>Endereço</h4>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.Endereco.Cep, htmlAttributes: new { @class = "control-label required" })
+                @Html.EditorFor(model => model.Endereco.Cep, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Endereco.Cep, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.Endereco.Logradouro, htmlAttributes: new { @class = "control-label required" })
+                @Html.EditorFor(model => model.Endereco.Logradouro, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Endereco.Logradouro, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-1">
+                @Html.LabelFor(model => model.Endereco.Numero, htmlAttributes: new { @class = "control-label required" })
+                @Html.EditorFor(model => model.Endereco.Numero, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Endereco.Numero, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.Endereco.Complemento, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Endereco.Complemento, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Endereco.Complemento, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.Endereco.Bairro, htmlAttributes: new { @class = "control-label required" })
+                @Html.EditorFor(model => model.Endereco.Bairro, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Endereco.Bairro, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.Endereco.Cidade, htmlAttributes: new { @class = "control-label required" })
+                @Html.EditorFor(model => model.Endereco.Cidade, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Endereco.Cidade, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-1">
+                @Html.LabelFor(model => model.Endereco.UF, htmlAttributes: new { @class = "control-label required" })
+                @Html.EditorFor(model => model.Endereco.UF, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Endereco.UF, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div style="float: right; margin-right: 10px">
+            <button type="submit" class="btn btn-success">Criar</button>
+        </div>
+    </div>
+
+</div>
+}
+
+<script type="text/javascript">
+
+    $(function () {
+        $('#datetimepicker2').datetimepicker({
+            format: 'DD/MM/YYYY',
+            maxDate: new Date()
+        });
+    });
+
+
+    $(function () {
+        $('#datetimepicker1').datetimepicker({
+            format: 'DD/MM/YYYY',
+            maxDate: new Date()
+        });
+    });
+
+    function formatarData1() {
+        $('#datetimepicker1').datetimepicker({
+            format: 'DD/MM/YYYY',
+            maxDate: new Date(),
+            defaultDate: new Date()
+        });
+    };
+
+    function formatarData2() {
+        $('#datetimepicker2').datetimepicker({
+            format: 'DD/MM/YYYY',
+            maxDate: new Date(),
+            defaultDate: new Date()
+        });
+    };
+
+    $("#UF").inputmask('AA', { "clearIncomplete": true });
+    $("#Endereco_UF").inputmask('AA', { "clearIncomplete": true });
+    $("#CPF").inputmask('999.999.999-99', { "clearIncomplete": true });
+    $("#Endereco_Cep").inputmask('99.999-999', { "clearIncomplete": true });
+    
+</script>
